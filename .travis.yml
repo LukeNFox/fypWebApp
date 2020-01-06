@@ -10,5 +10,5 @@ services:
 
 after_success:
   - docker login -u $DOCKER_USER -p $DOCKER_PASS
-  - docker build -t lukefox/webApp .
-  - docker push lukefox/webApp
+  - docker build -t lukefox/web-application .
+  - docker push lukefox/web-application
