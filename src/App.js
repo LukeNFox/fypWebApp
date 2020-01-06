@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled, { css } from "styled-components";
-import HeaderX from "./components/HeaderX";
+import HeaderX from "./components/Header/HeaderX";
 import './App.css';
 
 function App() {
