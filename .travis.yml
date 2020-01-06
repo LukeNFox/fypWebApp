@@ -4,3 +4,11 @@ node_js:
 
 before_install:
   - npm i -g npm@6.11.3
+
+services:
+  - docker
+
+after_success:
+  - docker login -u $DOCKER_USER -p $DOCKER_PASS
+  - docker build -t lukefox/webApp .
+  - docker push lukefox/webApp
