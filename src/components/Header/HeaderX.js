@@ -1,37 +1,54 @@
 import React, { Component } from "react";
 import styled, { css } from "styled-components";
-import LogoHeader from "./LogoHeader";
 
 function HeaderX(props) {
     return (
         <Container {...props}>
-            <Group>
-                <LogoHeader
-                    style={{
-                        width: 41,
-                        height: 44,
-                        marginTop: 6,
-                        marginLeft: 650
-                    }}
-                ></LogoHeader>
-            </Group>
+                <Root style={{
+                    height: 44,
+                }}>
+                    <Text5Stack>
+                        <Text5>ScubaSoS</Text5>
+                        <Rect8></Rect8>
+                    </Text5Stack>
+                </Root>
         </Container>
     );
 }
 
 const Container = styled.div`
-  display: flex;
   background-color: rgba(31,178,204,1);
-  flex-direction: column;
-`;
-
-const Group = styled.div`
-  background-color: rgba(31,178,204,1);
-  flex-direction: column;
   display: flex;
-  flex: 1 1 0%;
+  justify-content: center;
   margin-bottom: -30px;
   margin-top: 30px;
+`;
+
+const Root = styled.div`
+  margin-bottom: -30px;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+`;
+
+const Text5 = styled.span`
+  font-family: Arial;
+  color: rgba(255,255,255,1);
+  font-size: 36px;
+`;
+
+const Rect8 = styled.div`
+  top: 38px;
+  left: 0px;
+  background-color: rgba(5,5,5,1);
+  position: absolute;
+  right: 5px;
+  bottom: 63px;
+`;
+
+const Text5Stack = styled.div`
+  margin-bottom: -62px;
+  position: relative;
 `;
 
 export default HeaderX;
