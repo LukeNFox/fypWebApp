@@ -6,7 +6,7 @@ import Async from 'react-async';
 import styled from "styled-components";
 import MapContainer from "./components/MapContainer"
 
-let url = "ec2-52-212-49-13.eu-west-1.compute.amazonaws.com";
+let url = "ec2-63-33-233-120.eu-west-1.compute.amazonaws.com";
 
 const diveID = window.location.pathname.split('/')[1].toString();
 
