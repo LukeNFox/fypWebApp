@@ -5,6 +5,7 @@ FROM node:12.2.0-alpine
 WORKDIR /app
 COPY . /app
 RUN rm -rf node_modules
+RUN rm package-lock.json
 # add `/app/node_modules/.bin` to $PATH
 #ENV PATH /app/node_modules/.bin:$PATH
 
