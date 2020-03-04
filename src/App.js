@@ -9,6 +9,7 @@ import MapContainer from "./components/MapContainer"
 let url = "ec2-63-33-233-120.eu-west-1.compute.amazonaws.com";
 
 const diveID = window.location.pathname.split('/')[1].toString();
+let Data=null;
 
 const getDiveData = () =>
     fetch(`http://${url}/dive-service/dives?diveId=${diveID}`, {
@@ -26,10 +27,6 @@ const getDiverData = () =>
 
 
 export default class App extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div>
@@ -70,15 +67,31 @@ export default class App extends Component {
 
                                 if (data) {
                                     return (
+                                        <div>
                                         <Divers data={data}></Divers>
+                                        </div>
                                     );
                                 }
                             }}
                         </Async>
                 </InfoContainer>
-                    <MapContainerStyle>
-                        <MapContainer/>
-                    </MapContainerStyle>
+                    <Async promiseFn={getDiveData}>
+                        {({data, err, isLoading}) => {
+                            if (isLoading) {
+                                return (
+                                    <ReactLoading type={'spin'} color={'ffffff'} height={'10%'} width={'10%'}/>
+
+                                );
+                            }
+                            if (err) return `Something went wrong: ${err.message}`
+                            if (data)
+                                return (
+                                    <MapContainerStyle>
+                                        <MapContainer data={data}/>
+                                    </MapContainerStyle>
+                                );
+                        }}
+                    </Async>
                 </OuterContainer>
             </div>
         )
@@ -187,9 +200,15 @@ class ListComponent extends Component {
         if (this.props.data != null) {
             const info = Object.entries(this.props.data).map(([key, value]) => {
                 if (value != null) {
+
                     if(key.toString() == "name") {
                         return (
                             <Row keyField={"Diver Name"} value={value}></Row>
+                        );
+                    }
+                    if(key.toString() == "phone") {
+                        return (
+                            <Row keyField={"Phone Number"} value={value}></Row>
                         );
                     }
                     if(key.toString() == "qualifications") {
@@ -215,6 +234,21 @@ class ListComponent extends Component {
                     if(key.toString() == "medicalHistory") {
                         return (
                             <Row keyField={"Medical History"} value={value}></Row>
+                        );
+                    }
+                    if(key.toString() == "diveSite") {
+                        return (
+                            <Row keyField={"Dive Site"} value={value}></Row>
+                        );
+                    }
+                    if(key.toString() == "location") {
+                        return (
+                            <Row keyField={"Location"} value={value}></Row>
+                        );
+                    }
+                    if(key.toString() == "dannumber") {
+                        return (
+                            <Row keyField={"DAN phone Number"} value={value}></Row>
                         );
                     }
                     if(key.toString() == "maxDepth") {
