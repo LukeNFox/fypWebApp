@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import HeaderX from "./components/Header/HeaderX";
+import HeaderX  from "./components/Header/HeaderX";
 import ReactLoading from 'react-loading';
 import './App.css';
 import Async from 'react-async';
@@ -29,15 +29,10 @@ const getDiverData = () =>
 export default class App extends Component {
     render() {
         return (
-            <div>
-                <HeaderX
-                    style={{
-                        height: 100,
-                        marginTop: -3
-                    }}
-                ></HeaderX>
-                <OuterContainer>
-                <InfoContainer>
+            <div style = {{ backgroundColor: "#1fb2cc"}} >
+                <HeaderX/>
+                <OuterContainer >
+                <InfoContainer  >
                         <Async promiseFn={getDiveData}>
                             {({data, err, isLoading}) => {
                                 if (isLoading) {
@@ -86,7 +81,7 @@ export default class App extends Component {
                             if (err) return `Something went wrong: ${err.message}`
                             if (data)
                                 return (
-                                    <MapContainerStyle>
+                                    <MapContainerStyle >
                                         <MapContainer data={data}/>
                                     </MapContainerStyle>
                                 );
@@ -104,7 +99,8 @@ class Row extends React.Component {
         const value = this.props.value ? this.props.value : <span style={{color: 'red'}}>Unknown</span>;
         return (
             <div>
-                <div><b>{key.toString()}</b> : {value.toString()}</div>
+                <div><b>{key.toString()}</b></div>
+                <div>{value.toString()}</div>
             </div>
         );
     }

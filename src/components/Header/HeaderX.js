@@ -1,32 +1,32 @@
-import React, { Component } from "react";
+import React, { Image } from "react";
 import styled, { css } from "styled-components";
+import scubasoslogo from "./scubasoslogo.png";
 
-function HeaderX(props) {
+export default function HeaderX(props) {
+
     return (
-        <Container {...props}>
-                <Root style={{
-                    height: 44,
-                }}>
-                    <Text5Stack>
-                        <Text5>ScubaSoS</Text5>
-                        <Rect8></Rect8>
-                    </Text5Stack>
+            <Container>
+                <Root>
+                    <img src={scubasoslogo}
+                    style={{
+                        width: 200,
+                        borderRadius: 10,
+                        border: "2px solid black"}}/>
                 </Root>
-        </Container>
-    );
+            </Container>
+        );
 }
 
 const Container = styled.div`
   background-color: rgba(31,178,204,1);
   display: flex;
   justify-content: center;
+  height: 150px;
 `;
 
 const Root = styled.div`
   margin-bottom: -30px;
   margin-top: 30px;
-  display: flex;
-  flex-direction: row;
 `;
 
 const Text5 = styled.span`
@@ -48,5 +48,3 @@ const Text5Stack = styled.div`
   margin-bottom: -62px;
   position: relative;
 `;
-
-export default HeaderX;
