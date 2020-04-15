@@ -279,12 +279,12 @@ class ListComponent extends Component {
                     }
                     if(key.toString() == "entryTime") {
                         return (
-                            <Row keyField={"Time of Entry"} value={value}></Row>
+                            <Row keyField={"Entry Time (UTC)"} value={value}></Row>
                         );
                     }
                     if(key.toString() == "exitTime") {
                         return (
-                            <Row keyField={"Exit Time"} value={value}></Row>
+                            <Row keyField={"Exit Time (UTC)"} value={value}></Row>
                         );
                     }
                     if(key.toString() == "diveDifficulty") {
